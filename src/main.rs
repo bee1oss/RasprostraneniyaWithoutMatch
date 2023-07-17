@@ -10,22 +10,14 @@ fn main() {
                 Ok(_) => println!("File create"),
                 Err(e) => panic!("Error creating file:{e}")
             },
-            other=>panic!("Error occured:{:?}",other),
+            other => panic!("Error occured:{:?}", other),
         },
     }
 }
 
 fn read_file_date(path: &str) -> Result<String, Error> {
-    let f = File::open(path);
-    let mut f = match f {
-        Ok(file) => file,
-        Err(e) => return Err(e),
-    };
     let mut data = String::new();
-
-    match f.read_to_string(&mut data) {
-        Ok(_) => Ok(data),
-        Err(e) => Err(e),
-    }
+    File::open(path)?.read_to_string(&mut data)?;
+    Ok(data)
 }
 
