@@ -15,7 +15,7 @@ fn main() {
     }
 }
 
-fn read_file_date(path: &str) -> Result<String, Error> {
+fn read_file_date(path: &str) -> Result<String, Error> {//soru isareti operatoru sadece result donduren fonksiyonlarda kullanilabilir yani main icerisinde kullanilamaz.
     let mut data = String::new();
     File::open(path)?.read_to_string(&mut data)?;
     Ok(data)
